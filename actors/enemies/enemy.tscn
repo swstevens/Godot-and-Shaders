@@ -1,0 +1,69 @@
+[gd_scene load_steps=15 format=3 uid="uid://b3cifx72otgmo"]
+
+[ext_resource type="Script" path="res://actors/enemies/enemy.gd" id="1_ybt4q"]
+[ext_resource type="PackedScene" uid="uid://drphl5von85kh" path="res://tools/entity_components/general/health_component.tscn" id="2_banpv"]
+[ext_resource type="PackedScene" path="res://actors/demon_cute/demon_cute.tscn" id="2_jdg18"]
+[ext_resource type="Script" path="res://tools/entity_components/3d/player_detector_3d.gd" id="3_1v5tv"]
+[ext_resource type="PackedScene" uid="uid://bc12cqsdtqbc6" path="res://tools/entity_components/3d/hitbox_component_3d.tscn" id="4_655nf"]
+[ext_resource type="Script" path="res://tools/damage_source.gd" id="5_jvby8"]
+[ext_resource type="PackedScene" uid="uid://drycb11qlgwnx" path="res://tools/entity_components/3d/movement_component_3d.tscn" id="5_kne1d"]
+[ext_resource type="PackedScene" uid="uid://c3bh7irnwesh" path="res://tools/entity_components/3d/navigation_component_3d.tscn" id="6_3e8dj"]
+[ext_resource type="PackedScene" path="res://tools/entity_components/3d/mesh_component.tscn" id="6_3uy35"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6ip1b"]
+
+[sub_resource type="Resource" id="Resource_0087t"]
+script = ExtResource("5_jvby8")
+damage = 1
+damage_types = Array[int]([2])
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sbj46"]
+radius = 0.36
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0o7m2"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mcw6f"]
+radius = 0.35
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_ybt4q")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_banpv")]
+max_health = 30
+
+[node name="HurtboxComponent" parent="." instance=ExtResource("4_655nf")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("SphereShape3D_6ip1b")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("4_655nf")]
+max_hits = -1
+damage_source = SubResource("Resource_0087t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("SphereShape3D_sbj46")
+
+[node name="MovementComponent" parent="." instance=ExtResource("5_kne1d")]
+
+[node name="NavigationComponent" parent="." instance=ExtResource("6_3e8dj")]
+movement_component_path = NodePath("../MovementComponent")
+
+[node name="MeshComponent" parent="." instance=ExtResource("6_3uy35")]
+
+[node name="DemonBlob" parent="MeshComponent" instance=ExtResource("2_jdg18")]
+
+[node name="VisionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_1v5tv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VisionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_0o7m2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("SphereShape3D_mcw6f")

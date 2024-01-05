@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://dltosl7nlr1aa"]
+
+[ext_resource type="PackedScene" uid="uid://e4biybi2mnck" path="res://levels/level_3d.tscn" id="1_vbg5g"]
+[ext_resource type="Script" path="res://levels/example/level_example_1.gd" id="2_8upm7"]
+[ext_resource type="PackedScene" uid="uid://dxx63vu3xoado" path="res://levels/example/geometry/geometry_example_1.tscn" id="3_ujwry"]
+[ext_resource type="PackedScene" path="res://actors/demon_cute/demon_cute.tscn" id="4_6o4n2"]
+[ext_resource type="PackedScene" uid="uid://ebtmki4hbuka" path="res://ui/ui_level_controls.tscn" id="5_88bop"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hnhfo"]
+
+[sub_resource type="Sky" id="Sky_u36wv"]
+sky_material = SubResource("ProceduralSkyMaterial_hnhfo")
+
+[sub_resource type="Environment" id="Environment_yypne"]
+sky = SubResource("Sky_u36wv")
+tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.439216, 0.466667, 0.533333, 1)
+fog_density = 0.03
+
+[node name="LevelExample1" instance=ExtResource("1_vbg5g")]
+script = ExtResource("2_8upm7")
+starting_music_id = 1
+
+[node name="GeometryExample1" parent="GeometryContainer" index="0" instance=ExtResource("3_ujwry")]
+
+[node name="SpinningCameraPivot" type="Node3D" parent="CameraContainer" index="0"]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="CameraContainer/SpinningCameraPivot" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.75, 10)
+
+[node name="CameraSide" type="Camera3D" parent="CameraContainer" index="1"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 4, 0)
+
+[node name="CameraUp" type="Camera3D" parent="CameraContainer" index="2"]
+unique_name_in_owner = true
+transform = Transform3D(-0.707107, 0.241845, 0.664463, 0, 0.939693, -0.34202, -0.707107, -0.241845, -0.664463, 9, 2, -9)
+
+[node name="CameraTop" type="Camera3D" parent="CameraContainer" index="3"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+
+[node name="DemonBlob" parent="NPCContainer" index="2" instance=ExtResource("4_6o4n2")]
+
+[node name="DemonBlob2" parent="NPCContainer" index="3" instance=ExtResource("4_6o4n2")]
+
+[node name="DemonBlob3" parent="NPCContainer" index="4" instance=ExtResource("4_6o4n2")]
+
+[node name="DemonBlob4" parent="NPCContainer" index="5" instance=ExtResource("4_6o4n2")]
+
+[node name="DemonBlob5" parent="NPCContainer" index="6" instance=ExtResource("4_6o4n2")]
+
+[node name="DemonBlob6" parent="NPCContainer" index="7" instance=ExtResource("4_6o4n2")]
+
+[node name="DemonBlob7" parent="NPCContainer" index="8" instance=ExtResource("4_6o4n2")]
+
+[node name="DemonBlob8" parent="NPCContainer" index="9" instance=ExtResource("4_6o4n2")]
+
+[node name="DemonBlob9" parent="NPCContainer" index="10" instance=ExtResource("4_6o4n2")]
+
+[node name="DemonBlob10" parent="NPCContainer" index="11" instance=ExtResource("4_6o4n2")]
+
+[node name="DemonBlob11" parent="NPCContainer" index="12" instance=ExtResource("4_6o4n2")]
+
+[node name="DemonBlob12" parent="NPCContainer" index="13" instance=ExtResource("4_6o4n2")]
+
+[node name="DemonBlob13" parent="NPCContainer" index="14" instance=ExtResource("4_6o4n2")]
+
+[node name="DemonBlob14" parent="NPCContainer" index="15" instance=ExtResource("4_6o4n2")]
+
+[node name="DemonBlob15" parent="NPCContainer" index="16" instance=ExtResource("4_6o4n2")]
+
+[node name="DemonBlob16" parent="NPCContainer" index="17" instance=ExtResource("4_6o4n2")]
+
+[node name="DirectionalLight3D" parent="." index="8"]
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="9"]
+environment = SubResource("Environment_yypne")
+
+[node name="UILevelControls" parent="." index="10" instance=ExtResource("5_88bop")]
