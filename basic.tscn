@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1th7bv63xdjt"]
 
-[ext_resource type="PackedScene" uid="uid://ctom6q21rpgpq" path="res://models/scene.gltf" id="1_lshm4"]
+[ext_resource type="PackedScene" uid="uid://ctom6q21rpgpq" path="res://models/boat.gltf" id="1_lshm4"]
 
 [node name="Node3D" type="Node3D"]
 

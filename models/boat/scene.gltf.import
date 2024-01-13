@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ctom6q21rpgpq"
-path="res://.godot/imported/scene.gltf-becb726ae5eeee31d3232acaf8017d9f.scn"
+path="res://.godot/imported/scene.gltf-25b5d3a6f8204a0ac6d584282b0d4935.scn"
 
 [deps]
 
-source_file="res://models/scene.gltf"
-dest_files=["res://.godot/imported/scene.gltf-becb726ae5eeee31d3232acaf8017d9f.scn"]
+source_file="res://models/boat/scene.gltf"
+dest_files=["res://.godot/imported/scene.gltf-25b5d3a6f8204a0ac6d584282b0d4935.scn"]
 
 [params]
 

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Low poly lighthouse with village
+* source:	https://sketchfab.com/3d-models/low-poly-lighthouse-with-village-d6b3594b96ae4400a1054cf3b35fa38c
+* author:	albert_buscio (https://sketchfab.com/albert_buscio)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Low poly lighthouse with village" (https://sketchfab.com/3d-models/low-poly-lighthouse-with-village-d6b3594b96ae4400a1054cf3b35fa38c) by albert_buscio (https://sketchfab.com/albert_buscio) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
