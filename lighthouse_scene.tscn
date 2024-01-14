@@ -1,7 +1,53 @@
-[gd_scene load_steps=3 format=3 uid="uid://f4cjfnq3cr0o"]
+[gd_scene load_steps=12 format=3 uid="uid://f4cjfnq3cr0o"]
 
 [ext_resource type="PackedScene" uid="uid://ddmxvmtsvidpw" path="res://models/lighthouse/scene.gltf" id="1_kt0b4"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="2_yn4nc"]
+[ext_resource type="Shader" path="res://Shaders/water.gdshader" id="3_xskoq"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_klxx8"]
+subdivide_width = 50
+orientation = 1
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_erbut"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kbrjl"]
+seamless = true
+as_normal_map = true
+bump_strength = 1.5
+noise = SubResource("FastNoiseLite_erbut")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ebw0a"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kn3yq"]
+seamless = true
+as_normal_map = true
+bump_strength = 1.5
+noise = SubResource("FastNoiseLite_ebw0a")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wfll3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2p4ms"]
+seamless = true
+noise = SubResource("FastNoiseLite_wfll3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8h68v"]
+render_priority = 0
+shader = ExtResource("3_xskoq")
+shader_parameter/albedo = Color(0, 0.321569, 0.431373, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_direction_2 = Vector2(2, 0)
+shader_parameter/time_scale = 0.025
+shader_parameter/noise_scale = 10.0
+shader_parameter/height_scale = 0.15
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_kbrjl")
+shader_parameter/texture_normal_2 = SubResource("NoiseTexture2D_kn3yq")
+shader_parameter/wave = SubResource("NoiseTexture2D_2p4ms")
 
 [node name="Sketchfab_Scene" instance=ExtResource("1_kt0b4")]
 
@@ -15,3 +61,8 @@ visible = false
 transform = Transform3D(-0.173648, 0.0858316, -0.98106, 0, 0.996195, 0.0871557, 0.984808, 0.0151344, -0.172987, -7.82888, 3.06109, 15.9148)
 far = 34.11
 script = ExtResource("2_yn4nc")
+
+[node name="Node3D" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30753e-05, 0, 4.30413)
+mesh = SubResource("QuadMesh_klxx8")
+surface_material_override/0 = SubResource("ShaderMaterial_8h68v")
