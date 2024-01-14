@@ -5,6 +5,7 @@
 [ext_resource type="Shader" path="res://Shaders/water.gdshader" id="3_xskoq"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_klxx8"]
+size = Vector2(100, 100)
 subdivide_width = 50
 orientation = 1
 
@@ -66,3 +67,13 @@ script = ExtResource("2_yn4nc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30753e-05, 0, 4.30413)
 mesh = SubResource("QuadMesh_klxx8")
 surface_material_override/0 = SubResource("ShaderMaterial_8h68v")
+
+[node name="LightmapGI" type="DirectionalLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.02619, 0.369908)
+light_energy = 1.459
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 90.0
+light_bake_mode = 1
+directional_shadow_mode = 0
+sky_mode = 1
