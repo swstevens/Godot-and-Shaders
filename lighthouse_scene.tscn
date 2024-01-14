@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://f4cjfnq3cr0o"]
+
+[ext_resource type="PackedScene" uid="uid://ddmxvmtsvidpw" path="res://models/lighthouse/scene.gltf" id="1_kt0b4"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="2_yn4nc"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_kt0b4")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, -1.59414, 0, 0)
+
+[node name="water_2" parent="Sketchfab_model/root/GLTF_SceneRootNode" index="2"]
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="." index="1"]
+transform = Transform3D(-0.173648, 0.0858316, -0.98106, 0, 0.996195, 0.0871557, 0.984808, 0.0151344, -0.172987, -7.82888, 3.06109, 15.9148)
+far = 34.11
+script = ExtResource("2_yn4nc")

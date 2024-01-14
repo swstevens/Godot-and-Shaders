@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1th7bv63xdjt"]
 
-[ext_resource type="PackedScene" uid="uid://ctom6q21rpgpq" path="res://models/boat.gltf" id="1_lshm4"]
+[ext_resource type="PackedScene" uid="uid://ddmxvmtsvidpw" path="res://models/lighthouse/scene.gltf" id="1_vui6w"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_lshm4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.138938, 0, 0.0194957)
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_vui6w")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
