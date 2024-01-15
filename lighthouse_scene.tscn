@@ -16,7 +16,7 @@ fractal_type = 2
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kbrjl"]
 seamless = true
 as_normal_map = true
-bump_strength = 1.5
+bump_strength = 8.6
 noise = SubResource("FastNoiseLite_erbut")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ebw0a"]
@@ -26,7 +26,7 @@ fractal_type = 2
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kn3yq"]
 seamless = true
 as_normal_map = true
-bump_strength = 1.5
+bump_strength = 11.3
 noise = SubResource("FastNoiseLite_ebw0a")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wfll3"]
@@ -53,7 +53,7 @@ shader_parameter/wave = SubResource("NoiseTexture2D_2p4ms")
 [node name="Sketchfab_Scene" instance=ExtResource("1_kt0b4")]
 
 [node name="Sketchfab_model" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, -1.59414, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, -1.75579, 0, -0.594386)
 
 [node name="water_2" parent="Sketchfab_model/root/GLTF_SceneRootNode" index="2"]
 visible = false
@@ -63,14 +63,34 @@ transform = Transform3D(-0.173648, 0.0858316, -0.98106, 0, 0.996195, 0.0871557, 
 far = 34.11
 script = ExtResource("2_yn4nc")
 
-[node name="Node3D" type="MeshInstance3D" parent="." index="2"]
+[node name="Water" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30753e-05, 0, 4.30413)
 mesh = SubResource("QuadMesh_klxx8")
 surface_material_override/0 = SubResource("ShaderMaterial_8h68v")
 
 [node name="LightmapGI" type="DirectionalLight3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.02619, 0.369908)
-light_energy = 1.459
+transform = Transform3D(1, 0, 0, 0, -0.777146, 0.629321, 0, -0.629321, -0.777146, 0, 5.02619, 0.369908)
+light_energy = 0.75
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 90.0
+light_bake_mode = 1
+directional_shadow_mode = 0
+sky_mode = 1
+
+[node name="LightmapGI2" type="DirectionalLight3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.02619, 0.369908)
+light_energy = 0.75
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 90.0
+light_bake_mode = 1
+directional_shadow_mode = 0
+sky_mode = 1
+
+[node name="LightmapGI3" type="DirectionalLight3D" parent="." index="5"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.02619, 0.369908)
+light_energy = 0.75
 light_indirect_energy = 16.0
 light_volumetric_fog_energy = 0.0
 light_angular_distance = 90.0
