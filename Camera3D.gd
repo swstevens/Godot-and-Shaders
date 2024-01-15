@@ -1,8 +1,8 @@
 extends Camera3D
 
 var d := 0.0
-var radius := 10
-var speed := 0.25
+var radius := 5
+var speed := .25
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

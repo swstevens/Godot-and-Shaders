@@ -1,17 +1,21 @@
-[gd_scene load_steps=14 format=3 uid="uid://f4cjfnq3cr0o"]
+[gd_scene load_steps=20 format=3 uid="uid://f4cjfnq3cr0o"]
 
 [ext_resource type="PackedScene" uid="uid://ddmxvmtsvidpw" path="res://models/lighthouse/scene.gltf" id="1_kt0b4"]
-[ext_resource type="Shader" path="res://Shaders/ps1.gdshader" id="2_y6ceg"]
+[ext_resource type="Shader" path="res://Shaders/ps1.gdshader" id="2_m3e5b"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="2_yn4nc"]
+[ext_resource type="Texture2D" uid="uid://b3g15ff2pa2ah" path="res://Shaders/rock_boulder_dry_rough_4k.png" id="3_6i4ga"]
 [ext_resource type="Shader" path="res://Shaders/water.gdshader" id="3_xskoq"]
+[ext_resource type="Shader" path="res://lighthouse_scene.gdshader" id="5_cv3dd"]
+[ext_resource type="Texture2D" uid="uid://nnsgmejh1d3l" path="res://icon.svg" id="6_tkqx6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uyll5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3cgb"]
 render_priority = 0
-shader = ExtResource("2_y6ceg")
-shader_parameter/affine_mapping = false
+shader = ExtResource("2_m3e5b")
+shader_parameter/affine_mapping = true
 shader_parameter/alpha_scissor = 0.5
-shader_parameter/jitter = 0.25
+shader_parameter/jitter = 0.3
 shader_parameter/resolution = Vector2i(320, 240)
+shader_parameter/albedo = ExtResource("3_6i4ga")
 
 [sub_resource type="QuadMesh" id="QuadMesh_klxx8"]
 size = Vector2(100, 100)
@@ -59,30 +63,50 @@ shader_parameter/texture_normal = SubResource("NoiseTexture2D_kbrjl")
 shader_parameter/texture_normal_2 = SubResource("NoiseTexture2D_kn3yq")
 shader_parameter/wave = SubResource("NoiseTexture2D_2p4ms")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tardt"]
+shader = ExtResource("5_cv3dd")
+shader_parameter/skyTexture = ExtResource("6_tkqx6")
+
+[sub_resource type="Sky" id="Sky_llue0"]
+sky_material = SubResource("ShaderMaterial_tardt")
+
+[sub_resource type="Environment" id="Environment_16l3k"]
+resource_local_to_scene = true
+background_mode = 2
+sky = SubResource("Sky_llue0")
+ambient_light_color = Color(1, 1, 1, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1243
+volumetric_fog_albedo = Color(0.956863, 0.92549, 0.937255, 1)
+volumetric_fog_emission = Color(0.929412, 0.913725, 0.988235, 1)
+volumetric_fog_gi_inject = 0.2
+volumetric_fog_anisotropy = 0.55
+volumetric_fog_length = 25.74
+volumetric_fog_detail_spread = 6.0
+adjustment_enabled = true
+
 [node name="Sketchfab_Scene" instance=ExtResource("1_kt0b4")]
 
 [node name="Sketchfab_model" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, -1.75579, 0, -0.594386)
 
 [node name="Object_4" parent="Sketchfab_model/root/GLTF_SceneRootNode/base rock_0" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, -2.52435e-29, 0, 0, 1, 0, 0, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_uyll5")
+transform = Transform3D(1, 0, 0, 0, 1, -7.57306e-29, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_i3cgb")
 
 [node name="water_2" parent="Sketchfab_model/root/GLTF_SceneRootNode" index="2"]
 visible = false
 
-[node name="Camera3D" type="Camera3D" parent="." index="1"]
-transform = Transform3D(-0.173648, 0.0858316, -0.98106, 0, 0.996195, 0.0871557, 0.984808, 0.0151344, -0.172987, -7.82888, 3.06109, 15.9148)
-far = 34.11
-script = ExtResource("2_yn4nc")
-
-[node name="Water" type="MeshInstance3D" parent="." index="2"]
+[node name="Water" type="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30753e-05, 0, 4.30413)
 mesh = SubResource("QuadMesh_klxx8")
 surface_material_override/0 = SubResource("ShaderMaterial_8h68v")
 
-[node name="LightmapGI" type="DirectionalLight3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, -0.777146, 0.629321, 0, -0.629321, -0.777146, 0, 5.02619, 0.369908)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
+environment = SubResource("Environment_16l3k")
+
+[node name="LightmapGI3" type="DirectionalLight3D" parent="." index="3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.02619, 0.369908)
 light_energy = 0.75
 light_indirect_energy = 16.0
 light_volumetric_fog_energy = 0.0
@@ -101,8 +125,8 @@ light_bake_mode = 1
 directional_shadow_mode = 0
 sky_mode = 1
 
-[node name="LightmapGI3" type="DirectionalLight3D" parent="." index="5"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.02619, 0.369908)
+[node name="LightmapGI" type="DirectionalLight3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, -0.777146, 0.629321, 0, -0.629321, -0.777146, 0, 5.02619, 0.369908)
 light_energy = 0.75
 light_indirect_energy = 16.0
 light_volumetric_fog_energy = 0.0
@@ -110,3 +134,8 @@ light_angular_distance = 90.0
 light_bake_mode = 1
 directional_shadow_mode = 0
 sky_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="." index="6"]
+transform = Transform3D(-0.173648, 0.0858316, -0.98106, 0, 0.996195, 0.0871557, 0.984808, 0.0151344, -0.172987, -7.30753e-05, 0, 4.30413)
+far = 15.0
+script = ExtResource("2_yn4nc")
