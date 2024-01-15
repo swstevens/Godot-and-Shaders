@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://crnducebwhu6b"]
+
+[ext_resource type="Shader" path="res://Shaders/ps1.gdshader" id="1_miqne"]
+[ext_resource type="Texture2D" uid="uid://4adxke30iorq" path="res://Shaders/ceramic_roof_01_diff_4k.png" id="2_jp255"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_miqne")
+shader_parameter/affine_mapping = true
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
+shader_parameter/albedo = ExtResource("2_jp255")

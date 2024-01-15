@@ -1,21 +1,40 @@
-[gd_scene load_steps=20 format=3 uid="uid://f4cjfnq3cr0o"]
+[gd_scene load_steps=24 format=3 uid="uid://f4cjfnq3cr0o"]
 
 [ext_resource type="PackedScene" uid="uid://ddmxvmtsvidpw" path="res://models/lighthouse/scene.gltf" id="1_kt0b4"]
 [ext_resource type="Shader" path="res://Shaders/ps1.gdshader" id="2_m3e5b"]
 [ext_resource type="Script" path="res://Camera3D.gd" id="2_yn4nc"]
-[ext_resource type="Texture2D" uid="uid://b3g15ff2pa2ah" path="res://Shaders/rock_boulder_dry_rough_4k.png" id="3_6i4ga"]
+[ext_resource type="Texture2D" uid="uid://dr8lio131j75n" path="res://Shaders/worn_corrugated_iron_rough_4k.png" id="3_uc1xu"]
 [ext_resource type="Shader" path="res://Shaders/water.gdshader" id="3_xskoq"]
+[ext_resource type="Texture2D" uid="uid://bn4q2cqq5o53m" path="res://rust_coarse_01_diff_4k.png" id="4_3xjhj"]
+[ext_resource type="Material" uid="uid://crnducebwhu6b" path="res://roofing.tres" id="5_1hr0o"]
 [ext_resource type="Shader" path="res://lighthouse_scene.gdshader" id="5_cv3dd"]
 [ext_resource type="Texture2D" uid="uid://nnsgmejh1d3l" path="res://icon.svg" id="6_tkqx6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3cgb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vc4g5"]
 render_priority = 0
 shader = ExtResource("2_m3e5b")
 shader_parameter/affine_mapping = true
 shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.3
 shader_parameter/resolution = Vector2i(320, 240)
-shader_parameter/albedo = ExtResource("3_6i4ga")
+shader_parameter/albedo = ExtResource("3_uc1xu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ly6eq"]
+render_priority = 0
+shader = ExtResource("2_m3e5b")
+shader_parameter/affine_mapping = true
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxgef"]
+render_priority = 0
+shader = ExtResource("2_m3e5b")
+shader_parameter/affine_mapping = true
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
+shader_parameter/albedo = ExtResource("4_3xjhj")
 
 [sub_resource type="QuadMesh" id="QuadMesh_klxx8"]
 size = Vector2(100, 100)
@@ -92,10 +111,84 @@ transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, -1.75579
 
 [node name="Object_4" parent="Sketchfab_model/root/GLTF_SceneRootNode/base rock_0" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -7.57306e-29, 0, 0, 1, 0, 0, 0)
-surface_material_override/0 = SubResource("ShaderMaterial_i3cgb")
+surface_material_override/0 = SubResource("ShaderMaterial_vc4g5")
+
+[node name="Object_6" parent="Sketchfab_model/root/GLTF_SceneRootNode/lighthouse_1" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_ly6eq")
+
+[node name="Object_7" parent="Sketchfab_model/root/GLTF_SceneRootNode/lighthouse_1" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_nxgef")
 
 [node name="water_2" parent="Sketchfab_model/root/GLTF_SceneRootNode" index="2"]
 visible = false
+
+[node name="Object_14" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_5" index="1"]
+transform = Transform3D(1, -2.52435e-29, -5.96046e-08, -3.78653e-29, 1, 0, 5.96046e-08, 7.57306e-29, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_17" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_002_6" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_20" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_004_7" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_23" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_005_8" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_26" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_001_9" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_29" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_003_10" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_32" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_006_11" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_35" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_007_12" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_38" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_008_13" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_41" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_009_14" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_44" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_010_15" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_47" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_011_16" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_50" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_012_17" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_53" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_013_18" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_56" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_014_19" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_59" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_015_20" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_62" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_016_21" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_65" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_017_22" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_68" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_018_23" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_71" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_019_24" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_74" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_020_25" index="1"]
+surface_material_override/0 = ExtResource("5_1hr0o")
+
+[node name="Object_77" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_021_26" index="1"]
+transform = Transform3D(1, 0, 0, 5.04871e-29, 1, 2.52435e-29, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("5_1hr0o")
 
 [node name="Water" type="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30753e-05, 0, 4.30413)
