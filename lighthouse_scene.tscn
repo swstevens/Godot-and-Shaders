@@ -257,3 +257,11 @@ mesh = SubResource("BoxMesh_dd1yt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube" index="1"]
 shape = SubResource("BoxShape3D_0uig5")
+
+[node name="ProbeContainer" type="Node3D" parent="Cube" index="2"]
+
+[node name="Marker3D" type="Marker3D" parent="Cube/ProbeContainer" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.484352, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="Cube/ProbeContainer" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.503695, 0, 0)
