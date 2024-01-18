@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://f4cjfnq3cr0o"]
+[gd_scene load_steps=27 format=3 uid="uid://f4cjfnq3cr0o"]
 
 [ext_resource type="PackedScene" uid="uid://ddmxvmtsvidpw" path="res://models/lighthouse/scene.gltf" id="1_kt0b4"]
 [ext_resource type="Shader" path="res://Shaders/ps1.gdshader" id="2_m3e5b"]
@@ -10,6 +10,7 @@
 [ext_resource type="Shader" path="res://lighthouse_scene.gdshader" id="5_cv3dd"]
 [ext_resource type="Texture2D" uid="uid://nnsgmejh1d3l" path="res://icon.svg" id="6_tkqx6"]
 [ext_resource type="Script" path="res://Water.gd" id="7_86mcn"]
+[ext_resource type="Texture2D" uid="uid://cav6ija76svd2" path="res://Shaders/seamless water 2.png" id="7_j837l"]
 [ext_resource type="PackedScene" uid="uid://bywtdn4bqj555" path="res://models/boat_2/scene.gltf" id="10_vbexb"]
 [ext_resource type="Script" path="res://floating.gd" id="11_m1uou"]
 
@@ -44,26 +45,6 @@ size = Vector2(100, 100)
 subdivide_width = 50
 orientation = 1
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_erbut"]
-noise_type = 3
-fractal_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kbrjl"]
-seamless = true
-as_normal_map = true
-bump_strength = 8.6
-noise = SubResource("FastNoiseLite_erbut")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ebw0a"]
-noise_type = 3
-fractal_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kn3yq"]
-seamless = true
-as_normal_map = true
-bump_strength = 11.3
-noise = SubResource("FastNoiseLite_ebw0a")
-
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wfll3"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2p4ms"]
@@ -74,15 +55,24 @@ noise = SubResource("FastNoiseLite_wfll3")
 render_priority = 0
 shader = ExtResource("3_xskoq")
 shader_parameter/albedo = Color(0, 0.321569, 0.431373, 1)
+shader_parameter/albedo2 = null
 shader_parameter/metallic = 0.0
-shader_parameter/roughness = 0.0
+shader_parameter/roughness = 0.02
 shader_parameter/wave_direction = Vector2(2, 0)
 shader_parameter/wave_direction_2 = Vector2(2, 0)
 shader_parameter/time_scale = 0.025
 shader_parameter/noise_scale = 10.0
 shader_parameter/height_scale = 0.15
-shader_parameter/texture_normal = SubResource("NoiseTexture2D_kbrjl")
-shader_parameter/texture_normal_2 = SubResource("NoiseTexture2D_kn3yq")
+shader_parameter/edge_scale = 0.5
+shader_parameter/near = 1.0
+shader_parameter/far = 100.0
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/color_deep = Color(0, 0, 0.137255, 1)
+shader_parameter/color_shallow = Color(0.717647, 0.811765, 0.996078, 1)
+shader_parameter/beers_law = 5.0
+shader_parameter/depth_offset = -0.75
+shader_parameter/texture_normal = ExtResource("7_j837l")
+shader_parameter/texture_normal_2 = ExtResource("7_j837l")
 shader_parameter/wave = SubResource("NoiseTexture2D_2p4ms")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tardt"]
@@ -244,7 +234,7 @@ far = 15.0
 script = ExtResource("2_yn4nc")
 
 [node name="boat" parent="." index="7" instance=ExtResource("10_vbexb")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.18716, 0.0874165, -4.73908)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.18716, 0.0538652, -4.73908)
 
 [node name="Cube" type="RigidBody3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
