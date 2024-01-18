@@ -1,17 +1,26 @@
 extends CharacterBody3D
 
 @onready var head = $head
+@onready var collision = $collision
+@onready var crouch_collision = $crouch_collision
+@onready var ray_cast_3d = $RayCast3D
 
 const SPEED = 5.0
 var current_speed = 5.0
 
 const walking_speed = 5.0
-const sprint_speed = 8.0
+const sprint_speed = 3.0
 const crouching_speed = 3.0
 
 const JUMP_VELOCITY = 4.5
 
 const mouse_sens = 0.4
+
+var lerp_speed = 10.0
+
+var direction = Vector3.ZERO
+
+var crouch_height = -0.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -27,12 +36,19 @@ func _input(event):
 
 func _physics_process(delta):
 	# Add the gravity.
-	if Input.is_action_pressed("sprint"):
-		current_speed = sprint_speed
-	elif Input.is_action_pressed("crouch"):
+	if Input.is_action_pressed("crouch"):
 		current_speed = crouching_speed
-	else:
+		head.position.y = lerp(head.position.y,0.0 + crouch_height,delta*lerp_speed)
+		collision.disabled = true
+		crouch_collision.disabled = false
+	elif !ray_cast_3d.is_colliding():
+		head.position.y = lerp(head.position.y,0.0,delta*lerp_speed)
 		current_speed = walking_speed
+		collision.disabled = false
+		crouch_collision.disabled = true
+		
+	if Input.is_action_pressed("sprint"):
+		current_speed += sprint_speed
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
@@ -43,7 +59,7 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta*lerp_speed)
 	if direction:
 		velocity.x = direction.x * current_speed
 		velocity.z = direction.z * current_speed
