@@ -17,6 +17,7 @@ const JUMP_VELOCITY = 4.5
 const mouse_sens = 0.4
 
 var lerp_speed = 10.0
+var sprinting = false
 
 var direction = Vector3.ZERO
 
@@ -47,8 +48,12 @@ func _physics_process(delta):
 		collision.disabled = false
 		crouch_collision.disabled = true
 		
-	if Input.is_action_pressed("sprint"):
-		current_speed += sprint_speed
+	if Input.is_action_pressed("sprint") and is_on_floor():
+		sprinting = true
+	elif not Input.is_action_pressed("sprint") and is_on_floor():
+		sprinting = false
+	
+	current_speed += int(sprinting) * sprint_speed
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
