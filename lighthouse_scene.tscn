@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://f4cjfnq3cr0o"]
+[gd_scene load_steps=31 format=3 uid="uid://f4cjfnq3cr0o"]
 
 [ext_resource type="PackedScene" uid="uid://ddmxvmtsvidpw" path="res://models/lighthouse/scene.gltf" id="1_kt0b4"]
 [ext_resource type="Shader" path="res://Shaders/ps1.gdshader" id="2_m3e5b"]
@@ -80,13 +80,13 @@ shader_parameter/wave = SubResource("NoiseTexture2D_2p4ms")
 shader = ExtResource("5_cv3dd")
 shader_parameter/skyTexture = ExtResource("6_tkqx6")
 
-[sub_resource type="Sky" id="Sky_llue0"]
+[sub_resource type="Sky" id="Sky_egsdl"]
 sky_material = SubResource("ShaderMaterial_tardt")
 
 [sub_resource type="Environment" id="Environment_16l3k"]
 resource_local_to_scene = true
 background_mode = 2
-sky = SubResource("Sky_llue0")
+sky = SubResource("Sky_egsdl")
 ambient_light_color = Color(1, 1, 1, 1)
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.1243
@@ -99,6 +99,10 @@ volumetric_fog_detail_spread = 6.0
 adjustment_enabled = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_6ms1i"]
+size = Vector2(3.5, 2)
+orientation = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_qabik"]
 orientation = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dwfky"]
@@ -240,7 +244,12 @@ far = 15.0
 script = ExtResource("2_yn4nc")
 
 [node name="boat" parent="." index="7" instance=ExtResource("10_vbexb")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.18716, 0.0538652, -4.73908)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.18716, 0.0464198, -4.73908)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="boat" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0915918, 0.476014, -0.00688553)
+mesh = SubResource("QuadMesh_6ms1i")
+surface_material_override/0 = ExtResource("13_57x7x")
 
 [node name="mask tester" type="RigidBody3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30753e-05, 0, 4.30413)
@@ -248,7 +257,7 @@ script = ExtResource("11_m1uou")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="mask tester" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476014, 0)
-mesh = SubResource("QuadMesh_6ms1i")
+mesh = SubResource("QuadMesh_qabik")
 surface_material_override/0 = ExtResource("13_57x7x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mask tester" index="1"]
