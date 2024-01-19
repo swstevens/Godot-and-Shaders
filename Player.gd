@@ -17,10 +17,11 @@ const JUMP_VELOCITY = 4.5
 const mouse_sens = 0.4
 
 var lerp_speed = 10.0
+var air_lerp_speed = 3.0
 var sprinting = false
 
 var direction = Vector3.ZERO
-var input_dir;
+
 
 var crouch_height = -0.5
 
@@ -30,7 +31,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -66,9 +66,12 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if is_on_floor():
-		input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta*lerp_speed)
+		direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta*lerp_speed)
+	else:
+		if input_dir != Vector2.ZERO:
+			direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta*air_lerp_speed)
 	if direction:
 		velocity.x = direction.x * current_speed
 		velocity.z = direction.z * current_speed

@@ -1,0 +1,118 @@
+[gd_scene load_steps=15 format=3 uid="uid://dp5da81x82a3j"]
+
+[ext_resource type="Texture2D" uid="uid://b3g15ff2pa2ah" path="res://Shaders/rock_boulder_dry_rough_4k.png" id="1_6apk6"]
+[ext_resource type="Script" path="res://Player.gd" id="1_w1len"]
+[ext_resource type="Shader" path="res://lighthouse_scene.gdshader" id="2_q00e3"]
+[ext_resource type="Texture2D" uid="uid://nnsgmejh1d3l" path="res://icon.svg" id="3_qkcry"]
+[ext_resource type="Material" uid="uid://crnducebwhu6b" path="res://roofing.tres" id="5_hh8p4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_s3nam"]
+size = Vector3(200, 1, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7x0vm"]
+albedo_texture = ExtResource("1_6apk6")
+
+[sub_resource type="BoxMesh" id="BoxMesh_me7j8"]
+size = Vector3(195, 0.5, 195)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jx67p"]
+albedo_texture = ExtResource("1_6apk6")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ryrxg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dwx66"]
+height = 1.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qdpxd"]
+shader = ExtResource("2_q00e3")
+shader_parameter/skyTexture = ExtResource("3_qkcry")
+
+[sub_resource type="Sky" id="Sky_llue0"]
+sky_material = SubResource("ShaderMaterial_qdpxd")
+
+[sub_resource type="Environment" id="Environment_i8vhf"]
+resource_local_to_scene = true
+background_mode = 2
+sky = SubResource("Sky_llue0")
+ambient_light_color = Color(1, 1, 1, 1)
+volumetric_fog_density = 0.1243
+volumetric_fog_albedo = Color(0.956863, 0.92549, 0.937255, 1)
+volumetric_fog_emission = Color(0.929412, 0.913725, 0.988235, 1)
+volumetric_fog_gi_inject = 0.2
+volumetric_fog_anisotropy = 0.55
+volumetric_fog_length = 25.74
+volumetric_fog_detail_spread = 6.0
+adjustment_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+use_collision = true
+mesh = SubResource("BoxMesh_s3nam")
+material = SubResource("StandardMaterial3D_7x0vm")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.290409, 0)
+operation = 2
+mesh = SubResource("BoxMesh_me7j8")
+material = SubResource("StandardMaterial3D_jx67p")
+
+[node name="LightmapGI3" type="DirectionalLight3D" parent="CSGMesh3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.02619, 0.369908)
+light_energy = 0.75
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 90.0
+light_bake_mode = 1
+directional_shadow_mode = 0
+sky_mode = 1
+
+[node name="LightmapGI2" type="DirectionalLight3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.02619, 0.369908)
+light_energy = 0.75
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 90.0
+light_bake_mode = 1
+directional_shadow_mode = 0
+sky_mode = 1
+
+[node name="LightmapGI" type="DirectionalLight3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, -0.777146, 0.629321, 0, -0.629321, -0.777146, 0, 5.02619, 0.369908)
+light_energy = 0.75
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 90.0
+light_bake_mode = 1
+directional_shadow_mode = 0
+sky_mode = 1
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Player" type="CharacterBody3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09576, 0)
+script = ExtResource("1_w1len")
+
+[node name="collision" type="CollisionShape3D" parent="Node3D/Player"]
+shape = SubResource("CapsuleShape3D_ryrxg")
+
+[node name="crouch_collision" type="CollisionShape3D" parent="Node3D/Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("CapsuleShape3D_dwx66")
+
+[node name="head" type="Node3D" parent="Node3D/Player"]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D/Player/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.562198, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Node3D/Player"]
+target_position = Vector3(0, 1, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i8vhf")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.135, 2.1, 0)
+use_collision = true
+size = Vector3(5, 1, 5)
+material = ExtResource("5_hh8p4")
