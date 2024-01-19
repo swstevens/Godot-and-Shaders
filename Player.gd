@@ -20,14 +20,17 @@ var lerp_speed = 10.0
 var sprinting = false
 
 var direction = Vector3.ZERO
+var input_dir;
 
 var crouch_height = -0.5
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -63,7 +66,8 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if is_on_floor():
+		input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta*lerp_speed)
 	if direction:
 		velocity.x = direction.x * current_speed
