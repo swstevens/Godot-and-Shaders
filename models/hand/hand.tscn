@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://csdflpfmgsxqb"]
+
+[ext_resource type="PackedScene" uid="uid://yehknrunu2p7" path="res://models/hand/uploads_files_4367404_hand.glb" id="1_gn600"]
+[ext_resource type="Shader" path="res://Shaders/ps1.gdshader" id="2_lgkmi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3paux"]
+render_priority = 0
+shader = ExtResource("2_lgkmi")
+shader_parameter/affine_mapping = false
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
+
+[node name="uploads_files_4367404_hand" instance=ExtResource("1_gn600")]
+
+[node name="hand" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="arm_lower" parent="hand" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="index_0" parent="hand" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.927184, -0.374607, 0, 0.374607, 0.927184, 0.635515, 0, -1.8433)
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="index_1" parent="hand/index_0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.95882, -0.284015, 0, 0.284015, 0.95882, 0, 0, -0.520542)
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="index_2" parent="hand/index_0/index_1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.927184, -0.374607, 0, 0.374607, 0.927184, 0, 0, -0.496836)
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="middle_0" parent="hand" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.927184, -0.374607, 0, 0.374607, 0.927184, 0.219422, 0, -1.96367)
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="middle_1" parent="hand/middle_0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.981627, -0.190809, 0, 0.190809, 0.981627, 0, 0, -0.595449)
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="middle_2" parent="hand/middle_0/middle_1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.887011, -0.461749, 0, 0.461749, 0.887011, 0, 0, -0.576577)
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="pinky_0" parent="hand" index="3"]
+transform = Transform3D(0.867191, 0.403451, 0.291903, -0.147988, 0.768489, -0.622515, -0.475479, 0.496641, 0.726132, -0.636916, 0, -1.87594)
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="pinky_1" parent="hand/pinky_0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.838671, -0.544639, 0, 0.544639, 0.838671, 0, 0, -0.508631)
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="pinky_2" parent="hand/pinky_0/pinky_1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.95882, -0.284015, 0, 0.284015, 0.95882, 0, 0, -0.484157)
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="ring_0" parent="hand" index="4"]
+transform = Transform3D(1, 0, 0, 0, 0.887011, -0.461749, 0, 0.461749, 0.887011, -0.22161, 0, -1.94957)
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="ring_1" parent="hand/ring_0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.95882, -0.284015, 0, 0.284015, 0.95882, 0, 0, -0.578411)
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="ring_2" parent="hand/ring_0/ring_1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.95882, -0.284015, 0, 0.284015, 0.95882, 0, 0, -0.558439)
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="thumb_0" parent="hand" index="5"]
+transform = Transform3D(0.941986, -0.74127, 0, 0.74127, 0.941986, 0, 0, 0, 1.19867, 0.71163, -0.0538707, -0.365427)
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="thumb_1" parent="hand/thumb_0" index="0"]
+transform = Transform3D(0.981959, 0, 0.189095, 0, 1, 0, -0.189095, 0, 0.981959, 0.418848, 0, -0.541475)
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")
+
+[node name="thumb_2" parent="hand/thumb_0/thumb_1" index="0"]
+transform = Transform3D(0.841511, 0, 0.54024, 0, 1, 0, -0.54024, 0, 0.841511, 0.286444, 0, -0.397435)
+surface_material_override/0 = SubResource("ShaderMaterial_3paux")

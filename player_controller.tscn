@@ -1,10 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://dp5da81x82a3j"]
+[gd_scene load_steps=27 format=3 uid="uid://dp5da81x82a3j"]
 
 [ext_resource type="Texture2D" uid="uid://b3g15ff2pa2ah" path="res://Shaders/rock_boulder_dry_rough_4k.png" id="1_6apk6"]
 [ext_resource type="Script" path="res://Player.gd" id="1_w1len"]
 [ext_resource type="Shader" path="res://lighthouse_scene.gdshader" id="2_q00e3"]
 [ext_resource type="Texture2D" uid="uid://nnsgmejh1d3l" path="res://icon.svg" id="3_qkcry"]
+[ext_resource type="PackedScene" uid="uid://yehknrunu2p7" path="res://models/hand/uploads_files_4367404_hand.glb" id="4_4eglw"]
+[ext_resource type="PackedScene" uid="uid://csdflpfmgsxqb" path="res://models/hand/hand.tscn" id="4_4qtny"]
 [ext_resource type="Material" uid="uid://crnducebwhu6b" path="res://roofing.tres" id="5_hh8p4"]
+[ext_resource type="Script" path="res://interaction.gd" id="6_24qh2"]
+[ext_resource type="PackedScene" uid="uid://cm8m2aebygauo" path="res://models/boat_2/boat_with_shader.tscn" id="8_v3gn3"]
+[ext_resource type="Material" uid="uid://o1hyhejudkcq" path="res://Shaders/water_masker.tres" id="9_p7hrj"]
+[ext_resource type="PackedScene" uid="uid://baelpbbrx2aeu" path="res://models/fishing rod/scene.gltf" id="11_mmv35"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_s3nam"]
 size = Vector3(200, 1, 200)
@@ -44,6 +50,54 @@ volumetric_fog_length = 25.74
 volumetric_fog_detail_spread = 6.0
 adjustment_enabled = true
 
+[sub_resource type="QuadMesh" id="QuadMesh_xs774"]
+size = Vector2(3.5, 2)
+orientation = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rn7vm"]
+size = Vector3(3.4978, 1, 1.97919)
+
+[sub_resource type="Animation" id="Animation_yroo6"]
+resource_name = "float"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-6.08, 0.4, -3.594), Vector3(-6.08, 0.2, -3.594), Vector3(-6.08, 0.4, -3.594)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mg7gn"]
+_data = {
+"float": SubResource("Animation_yroo6")
+}
+
+[sub_resource type="Animation" id="Animation_e5i05"]
+resource_name = "float"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-6.08, 0.4, -3.594), Vector3(-6.08, 0.4, -3.594), Vector3(-6.08, 0.4, -3.594)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wj8pq"]
+_data = {
+"float": SubResource("Animation_e5i05")
+}
+
 [node name="environment" type="Node3D"]
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
@@ -76,8 +130,8 @@ mesh = SubResource("BoxMesh_me7j8")
 material = SubResource("StandardMaterial3D_jx67p")
 
 [node name="LightmapGI3" type="DirectionalLight3D" parent="CSGMesh3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 5.02619, 0.369908)
-light_energy = 0.75
+transform = Transform3D(-0.5, -0.612372, 0.612372, 0, 0.707107, 0.707107, -0.866025, 0.353553, -0.353553, 0, 5.02619, 0.369908)
+light_energy = 0.25
 light_indirect_energy = 16.0
 light_volumetric_fog_energy = 0.0
 light_angular_distance = 90.0
@@ -86,8 +140,8 @@ directional_shadow_mode = 0
 sky_mode = 1
 
 [node name="LightmapGI2" type="DirectionalLight3D" parent="CSGMesh3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.02619, 0.369908)
-light_energy = 0.75
+transform = Transform3D(-0.5, 0.612372, -0.612372, 0, 0.707107, 0.707107, 0.866025, 0.353553, -0.353553, 0, 5.02619, 0.369908)
+light_energy = 0.25
 light_indirect_energy = 16.0
 light_volumetric_fog_energy = 0.0
 light_angular_distance = 90.0
@@ -96,8 +150,8 @@ directional_shadow_mode = 0
 sky_mode = 1
 
 [node name="LightmapGI" type="DirectionalLight3D" parent="CSGMesh3D"]
-transform = Transform3D(1, 0, 0, 0, -0.777146, 0.629321, 0, -0.629321, -0.777146, 0, 5.02619, 0.369908)
-light_energy = 0.75
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5.02619, 0.369908)
+light_energy = 0.25
 light_indirect_energy = 16.0
 light_volumetric_fog_energy = 0.0
 light_angular_distance = 90.0
@@ -120,11 +174,54 @@ shape = SubResource("CapsuleShape3D_dwx66")
 
 [node name="head" type="Node3D" parent="Node3D/Player"]
 
+[node name="uploads_files_4367404_hand2" parent="Node3D/Player/head" instance=ExtResource("4_4qtny")]
+process_priority = 1
+transform = Transform3D(-0.0984925, -0.00514088, 0.0165168, -0.00486151, -0.0834074, -0.0549506, 0.0166012, -0.0549251, 0.0819001, 0.42545, 0.191735, -0.690903)
+
+[node name="uploads_files_4367404_hand" parent="Node3D/Player/head" instance=ExtResource("4_4eglw")]
+transform = Transform3D(-0.0984925, -0.00514088, 0.0165168, -0.00486151, -0.0834074, -0.0549506, 0.0166012, -0.0549251, 0.0819001, 0.42545, 0.191735, -0.690903)
+visible = false
+
 [node name="Camera3D" type="Camera3D" parent="Node3D/Player/head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.562198, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Node3D/Player/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555003, 0)
+target_position = Vector3(0, 0, -1)
+script = ExtResource("6_24qh2")
 
 [node name="RayCast3D" type="RayCast3D" parent="Node3D/Player"]
 target_position = Vector3(0, 1, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i8vhf")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("8_v3gn3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18716, 0.0464198, -4.73908)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sketchfab_Scene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0915918, 0.476014, -0.00688553)
+mesh = SubResource("QuadMesh_xs774")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_p7hrj")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Sketchfab_Scene"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_Scene/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.101826, 0.190247, 0.0400696)
+shape = SubResource("BoxShape3D_rn7vm")
+
+[node name="fishing_rod" parent="." instance=ExtResource("11_mmv35")]
+transform = Transform3D(0.003, 0, 0, 0, 0.003, 0, 0, 0, 0.003, -6.08, 0.269099, -3.594)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fishing_rod"]
+libraries = {
+"": SubResource("AnimationLibrary_mg7gn")
+}
+speed_scale = 0.076
+
+[node name="AnimationTree" type="AnimationTree" parent="fishing_rod/AnimationPlayer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_wj8pq")
+}

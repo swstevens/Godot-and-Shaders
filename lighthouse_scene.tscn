@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://nnsgmejh1d3l" path="res://icon.svg" id="6_tkqx6"]
 [ext_resource type="Script" path="res://Water.gd" id="7_86mcn"]
 [ext_resource type="Texture2D" uid="uid://cav6ija76svd2" path="res://Shaders/seamless water 2.png" id="7_j837l"]
-[ext_resource type="PackedScene" uid="uid://bywtdn4bqj555" path="res://models/boat_2/scene.gltf" id="10_vbexb"]
 [ext_resource type="Script" path="res://floating.gd" id="11_m1uou"]
+[ext_resource type="PackedScene" uid="uid://cm8m2aebygauo" path="res://models/boat_2/boat_with_shader.tscn" id="12_7e44v"]
 [ext_resource type="Material" uid="uid://o1hyhejudkcq" path="res://Shaders/water_masker.tres" id="13_57x7x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vc4g5"]
@@ -243,12 +243,13 @@ transform = Transform3D(-0.173648, 0.0858316, -0.98106, 0, 0.996195, 0.0871557, 
 far = 15.0
 script = ExtResource("2_yn4nc")
 
-[node name="boat" parent="." index="7" instance=ExtResource("10_vbexb")]
+[node name="Sketchfab_Scene" parent="." index="7" instance=ExtResource("12_7e44v")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.18716, 0.0464198, -4.73908)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="boat" index="1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sketchfab_Scene" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0915918, 0.476014, -0.00688553)
 mesh = SubResource("QuadMesh_6ms1i")
+skeleton = NodePath("")
 surface_material_override/0 = ExtResource("13_57x7x")
 
 [node name="mask tester" type="RigidBody3D" parent="." index="8"]

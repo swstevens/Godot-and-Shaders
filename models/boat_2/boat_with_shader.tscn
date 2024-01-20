@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm8m2aebygauo"]
+
+[ext_resource type="PackedScene" uid="uid://bywtdn4bqj555" path="res://models/boat_2/scene.gltf" id="1_2b7ix"]
+[ext_resource type="Shader" path="res://Shaders/ps1.gdshader" id="2_e2k5f"]
+[ext_resource type="Texture2D" uid="uid://bwj3otnsst3d2" path="res://models/boat_2/textures/Boat_baseColor.png" id="3_kecpt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w7or4"]
+render_priority = 0
+shader = ExtResource("2_e2k5f")
+shader_parameter/affine_mapping = true
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
+shader_parameter/albedo = ExtResource("3_kecpt")
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_2b7ix")]
+
+[node name="Object_2" parent="Sketchfab_model/e592af04184c477ca45b4732f6921ee9_obj_cleaner_materialmerger_gles" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_w7or4")
