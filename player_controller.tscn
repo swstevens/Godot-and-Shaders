@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dp5da81x82a3j"]
+[gd_scene load_steps=27 format=3 uid="uid://dp5da81x82a3j"]
 
 [ext_resource type="Texture2D" uid="uid://b3g15ff2pa2ah" path="res://Shaders/rock_boulder_dry_rough_4k.png" id="1_6apk6"]
 [ext_resource type="Script" path="res://Player.gd" id="1_w1len"]
@@ -77,6 +77,11 @@ orientation = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rn7vm"]
 size = Vector3(3.4978, 1, 1.97919)
+
+[sub_resource type="SystemFont" id="SystemFont_1o07c"]
+
+[sub_resource type="Theme" id="Theme_v1d64"]
+default_font = SubResource("SystemFont_1o07c")
 
 [node name="environment" type="Node3D"]
 
@@ -166,7 +171,7 @@ script = ExtResource("6_24qh2")
 script = ExtResource("7_0h6n3")
 
 [node name="fishing_rod" parent="Node3D/Player/head/inventory_controller" instance=ExtResource("11_mmv35")]
-transform = Transform3D(-0.000545059, 0, 0.00295007, 0, 0.003, 0, -0.00295007, 0, -0.000545059, -0.0145201, -0.155636, -0.485921)
+transform = Transform3D(-0.000545059, 0, 0.00295007, 0, 0.003, 0, -0.00295007, 0, -0.000545059, -0.0639992, -0.0540441, -0.549662)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D/Player/head/inventory_controller/fishing_rod"]
 libraries = {
@@ -178,8 +183,13 @@ speed_scale = 0.076
 process_priority = 1
 transform = Transform3D(-0.0984925, -0.00514088, 0.0165168, -0.00486151, -0.0834074, -0.0549506, 0.0166012, -0.0549251, 0.0819001, 0.42545, 0.191735, -0.690903)
 
+[node name="SubViewport" type="SubViewport" parent="Node3D/Player/head"]
+
 [node name="RayCast3D" type="RayCast3D" parent="Node3D/Player"]
 target_position = Vector3(0, 1, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i8vhf")
@@ -202,3 +212,16 @@ shape = SubResource("BoxShape3D_rn7vm")
 [node name="pickup" type="CSGBox3D" parent="."]
 transform = Transform3D(0.960977, 0, -0.276627, 0, 1, 0, 0.276627, 0, 0.960977, -5.86245, 0.936343, -4.69436)
 use_collision = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 23.0
+theme = SubResource("Theme_v1d64")
+text = "bepis"

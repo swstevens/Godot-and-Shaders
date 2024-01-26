@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w7or4"]
 render_priority = 0
 shader = ExtResource("2_e2k5f")
-shader_parameter/affine_mapping = true
+shader_parameter/affine_mapping = false
 shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.25
 shader_parameter/resolution = Vector2i(320, 240)
