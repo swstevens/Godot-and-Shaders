@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b3g15ff2pa2ah" path="res://Shaders/rock_boulder_dry_rough_4k.png" id="1_ktjce"]
 [ext_resource type="Shader" path="res://Shaders/water.gdshader" id="2_660aj"]
 [ext_resource type="Texture2D" uid="uid://cav6ija76svd2" path="res://Shaders/seamless water 2.png" id="3_onbfj"]
-[ext_resource type="Script" path="res://Water.gd" id="4_sogmo"]
+[ext_resource type="Script" path="res://scripts/Water.gd" id="4_sogmo"]
 [ext_resource type="PackedScene" uid="uid://dm6snwu8uhoxo" path="res://models/fish/scene.gltf" id="5_lg7lk"]
 [ext_resource type="Script" path="res://models/fish/aggro.gd" id="6_y4fo2"]
 

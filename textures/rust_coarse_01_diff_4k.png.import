@@ -2,26 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x3en0db65d22"
-path="res://.godot/imported/qwantani_puresky.jpg-44eee33456912986f8cca43c3a08d039.ctex"
+uid="uid://bn4q2cqq5o53m"
+path.s3tc="res://.godot/imported/rust_coarse_01_diff_4k.png-f625e19fcee55efe56acbb63aa7dbb70.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://qwantani_puresky.jpg"
-dest_files=["res://.godot/imported/qwantani_puresky.jpg-44eee33456912986f8cca43c3a08d039.ctex"]
+source_file="res://textures/rust_coarse_01_diff_4k.png"
+dest_files=["res://.godot/imported/rust_coarse_01_diff_4k.png-f625e19fcee55efe56acbb63aa7dbb70.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +32,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

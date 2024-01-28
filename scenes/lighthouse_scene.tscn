@@ -1,32 +1,32 @@
 [gd_scene load_steps=31 format=3 uid="uid://f4cjfnq3cr0o"]
 
-[ext_resource type="PackedScene" uid="uid://ddmxvmtsvidpw" path="res://models/lighthouse/scene.gltf" id="1_kt0b4"]
-[ext_resource type="Shader" path="res://Shaders/ps1.gdshader" id="2_m3e5b"]
-[ext_resource type="Script" path="res://Camera3D.gd" id="2_yn4nc"]
-[ext_resource type="Texture2D" uid="uid://dr8lio131j75n" path="res://Shaders/worn_corrugated_iron_rough_4k.png" id="3_uc1xu"]
-[ext_resource type="Shader" path="res://Shaders/water.gdshader" id="3_xskoq"]
-[ext_resource type="Texture2D" uid="uid://bn4q2cqq5o53m" path="res://rust_coarse_01_diff_4k.png" id="4_3xjhj"]
-[ext_resource type="Material" uid="uid://crnducebwhu6b" path="res://roofing.tres" id="5_1hr0o"]
-[ext_resource type="Shader" path="res://lighthouse_scene.gdshader" id="5_cv3dd"]
-[ext_resource type="Texture2D" uid="uid://nnsgmejh1d3l" path="res://icon.svg" id="6_tkqx6"]
-[ext_resource type="Script" path="res://Water.gd" id="7_86mcn"]
-[ext_resource type="Texture2D" uid="uid://cav6ija76svd2" path="res://Shaders/seamless water 2.png" id="7_j837l"]
-[ext_resource type="Script" path="res://floating.gd" id="11_m1uou"]
-[ext_resource type="PackedScene" uid="uid://cm8m2aebygauo" path="res://models/boat_2/boat_with_shader.tscn" id="12_7e44v"]
-[ext_resource type="Material" uid="uid://o1hyhejudkcq" path="res://Shaders/water_masker.tres" id="13_57x7x"]
+[ext_resource type="PackedScene" uid="uid://ddmxvmtsvidpw" path="res://models/lighthouse/scene.gltf" id="1_sjmwd"]
+[ext_resource type="Shader" path="res://Shaders/ps1.gdshader" id="2_jsahj"]
+[ext_resource type="Texture2D" uid="uid://dr8lio131j75n" path="res://Shaders/worn_corrugated_iron_rough_4k.png" id="3_7o1g3"]
+[ext_resource type="Texture2D" uid="uid://bn4q2cqq5o53m" path="res://textures/rust_coarse_01_diff_4k.png" id="4_px6b3"]
+[ext_resource type="Material" uid="uid://crnducebwhu6b" path="res://textures/roofing.tres" id="5_ysruw"]
+[ext_resource type="Shader" path="res://Shaders/water.gdshader" id="6_7r6l1"]
+[ext_resource type="Texture2D" uid="uid://cav6ija76svd2" path="res://Shaders/seamless water 2.png" id="7_8gstk"]
+[ext_resource type="Script" path="res://scripts/Water.gd" id="8_i7kq2"]
+[ext_resource type="Shader" path="res://Shaders/lighthouse_scene.gdshader" id="9_3w2mc"]
+[ext_resource type="Texture2D" uid="uid://nnsgmejh1d3l" path="res://textures/icon.svg" id="10_yjts1"]
+[ext_resource type="Script" path="res://scripts/Camera3D.gd" id="11_wupet"]
+[ext_resource type="PackedScene" uid="uid://cm8m2aebygauo" path="res://models/boat_2/boat_with_shader.tscn" id="12_ibfl6"]
+[ext_resource type="Material" uid="uid://o1hyhejudkcq" path="res://Shaders/water_masker.tres" id="13_dyp20"]
+[ext_resource type="Script" path="res://scripts/floating.gd" id="14_o8fte"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vc4g5"]
 render_priority = 0
-shader = ExtResource("2_m3e5b")
+shader = ExtResource("2_jsahj")
 shader_parameter/affine_mapping = true
 shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.3
 shader_parameter/resolution = Vector2i(320, 240)
-shader_parameter/albedo = ExtResource("3_uc1xu")
+shader_parameter/albedo = ExtResource("3_7o1g3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ly6eq"]
 render_priority = 0
-shader = ExtResource("2_m3e5b")
+shader = ExtResource("2_jsahj")
 shader_parameter/affine_mapping = true
 shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.25
@@ -34,12 +34,12 @@ shader_parameter/resolution = Vector2i(320, 240)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nxgef"]
 render_priority = 0
-shader = ExtResource("2_m3e5b")
+shader = ExtResource("2_jsahj")
 shader_parameter/affine_mapping = true
 shader_parameter/alpha_scissor = 0.5
 shader_parameter/jitter = 0.25
 shader_parameter/resolution = Vector2i(320, 240)
-shader_parameter/albedo = ExtResource("4_3xjhj")
+shader_parameter/albedo = ExtResource("4_px6b3")
 
 [sub_resource type="QuadMesh" id="QuadMesh_klxx8"]
 size = Vector2(100, 100)
@@ -54,7 +54,7 @@ noise = SubResource("FastNoiseLite_wfll3")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8h68v"]
 render_priority = 0
-shader = ExtResource("3_xskoq")
+shader = ExtResource("6_7r6l1")
 shader_parameter/albedo = Color(0, 0.321569, 0.431373, 1)
 shader_parameter/albedo2 = null
 shader_parameter/metallic = 0.0
@@ -72,13 +72,13 @@ shader_parameter/color_deep = Color(0, 0, 0.137255, 1)
 shader_parameter/color_shallow = Color(0.717647, 0.811765, 0.996078, 1)
 shader_parameter/beers_law = 5.0
 shader_parameter/depth_offset = -0.75
-shader_parameter/texture_normal = ExtResource("7_j837l")
-shader_parameter/texture_normal_2 = ExtResource("7_j837l")
+shader_parameter/texture_normal = ExtResource("7_8gstk")
+shader_parameter/texture_normal_2 = ExtResource("7_8gstk")
 shader_parameter/wave = SubResource("NoiseTexture2D_2p4ms")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tardt"]
-shader = ExtResource("5_cv3dd")
-shader_parameter/skyTexture = ExtResource("6_tkqx6")
+shader = ExtResource("9_3w2mc")
+shader_parameter/skyTexture = ExtResource("10_yjts1")
 
 [sub_resource type="Sky" id="Sky_egsdl"]
 sky_material = SubResource("ShaderMaterial_tardt")
@@ -113,7 +113,7 @@ orientation = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0uig5"]
 
-[node name="Sketchfab_Scene" instance=ExtResource("1_kt0b4")]
+[node name="Sketchfab_Scene" instance=ExtResource("1_sjmwd")]
 
 [node name="Sketchfab_model" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 2.22045e-16, 1, 0, -1, 2.22045e-16, -1.75579, 0, -0.594386)
@@ -133,77 +133,77 @@ visible = false
 
 [node name="Object_14" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_5" index="1"]
 transform = Transform3D(1, -2.52435e-29, -5.96046e-08, -3.78653e-29, 1, 0, 5.96046e-08, 7.57306e-29, 1, 0, 0, 0)
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_17" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_002_6" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_20" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_004_7" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_23" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_005_8" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_26" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_001_9" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_29" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_003_10" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_32" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_006_11" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_35" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_007_12" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_38" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_008_13" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_41" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_009_14" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_44" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_010_15" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_47" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_011_16" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_50" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_012_17" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_53" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_013_18" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_56" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_014_19" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_59" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_015_20" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_62" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_016_21" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_65" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_017_22" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_68" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_018_23" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_71" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_019_24" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_74" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_020_25" index="1"]
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Object_77" parent="Sketchfab_model/root/GLTF_SceneRootNode/Cube_021_26" index="1"]
 transform = Transform3D(1, 0, 0, 5.04871e-29, 1, 2.52435e-29, 0, 0, 1, 0, 0, 0)
-surface_material_override/0 = ExtResource("5_1hr0o")
+surface_material_override/0 = ExtResource("5_ysruw")
 
 [node name="Water" type="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30753e-05, 0, 4.30413)
 mesh = SubResource("QuadMesh_klxx8")
 surface_material_override/0 = SubResource("ShaderMaterial_8h68v")
-script = ExtResource("7_86mcn")
+script = ExtResource("8_i7kq2")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
 environment = SubResource("Environment_16l3k")
@@ -241,25 +241,25 @@ sky_mode = 1
 [node name="Camera3D" type="Camera3D" parent="." index="6"]
 transform = Transform3D(-0.173648, 0.0858316, -0.98106, 0, 0.996195, 0.0871557, 0.984808, 0.0151344, -0.172987, -7.30753e-05, 0, 4.30413)
 far = 15.0
-script = ExtResource("2_yn4nc")
+script = ExtResource("11_wupet")
 
-[node name="Sketchfab_Scene" parent="." index="7" instance=ExtResource("12_7e44v")]
+[node name="Sketchfab_Scene" parent="." index="7" instance=ExtResource("12_ibfl6")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.18716, 0.0464198, -4.73908)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Sketchfab_Scene" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0915918, 0.476014, -0.00688553)
 mesh = SubResource("QuadMesh_6ms1i")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("13_57x7x")
+surface_material_override/0 = ExtResource("13_dyp20")
 
 [node name="mask tester" type="RigidBody3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30753e-05, 0, 4.30413)
-script = ExtResource("11_m1uou")
+script = ExtResource("14_o8fte")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="mask tester" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.476014, 0)
 mesh = SubResource("QuadMesh_qabik")
-surface_material_override/0 = ExtResource("13_57x7x")
+surface_material_override/0 = ExtResource("13_dyp20")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="mask tester" index="1"]
 shape = SubResource("BoxShape3D_dwfky")
@@ -282,7 +282,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.503695, 0, 0)
 [node name="Cube" type="RigidBody3D" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 physics_material_override = SubResource("PhysicsMaterial_ctls6")
-script = ExtResource("11_m1uou")
+script = ExtResource("14_o8fte")
 float_force = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Cube" index="0"]

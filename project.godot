@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Godot-and-shaders"
-run/main_scene="res://lighthouse_scene.tscn"
+run/main_scene="res://scenes/lighthouse_scene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://textures/icon.svg"
 
 [display]
 

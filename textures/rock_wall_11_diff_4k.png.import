@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn4q2cqq5o53m"
-path.s3tc="res://.godot/imported/rust_coarse_01_diff_4k.png-353a7a60c7f28bf1f1035671e1970bc5.s3tc.ctex"
+uid="uid://dvmf6hr8lmxsj"
+path.s3tc="res://.godot/imported/rock_wall_11_diff_4k.png-1632ebcc019dc7e6ca0088aacc49a48e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://rust_coarse_01_diff_4k.png"
-dest_files=["res://.godot/imported/rust_coarse_01_diff_4k.png-353a7a60c7f28bf1f1035671e1970bc5.s3tc.ctex"]
+source_file="res://textures/rock_wall_11_diff_4k.png"
+dest_files=["res://.godot/imported/rock_wall_11_diff_4k.png-1632ebcc019dc7e6ca0088aacc49a48e.s3tc.ctex"]
 
 [params]
 
