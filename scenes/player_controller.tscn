@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dp5da81x82a3j"]
+[gd_scene load_steps=29 format=3 uid="uid://dp5da81x82a3j"]
 
 [ext_resource type="Texture2D" uid="uid://b3g15ff2pa2ah" path="res://Shaders/rock_boulder_dry_rough_4k.png" id="1_6apk6"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_w1len"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cm8m2aebygauo" path="res://models/boat_2/boat_with_shader.tscn" id="8_v3gn3"]
 [ext_resource type="Material" uid="uid://o1hyhejudkcq" path="res://Shaders/water_masker.tres" id="9_p7hrj"]
 [ext_resource type="PackedScene" uid="uid://baelpbbrx2aeu" path="res://models/fishing rod/scene.gltf" id="11_mmv35"]
+[ext_resource type="FontFile" uid="uid://dwbhsaxehvrtg" path="res://textures/Template Gothic.otf" id="12_c4wmv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_s3nam"]
 size = Vector3(200, 1, 200)
@@ -82,6 +83,9 @@ size = Vector3(3.4978, 1, 1.97919)
 
 [sub_resource type="Theme" id="Theme_v1d64"]
 default_font = SubResource("SystemFont_1o07c")
+
+[sub_resource type="LabelSettings" id="LabelSettings_vl64b"]
+font = ExtResource("12_c4wmv")
 
 [node name="environment" type="Node3D"]
 
@@ -172,6 +176,7 @@ script = ExtResource("7_0h6n3")
 
 [node name="fishing_rod" parent="Node3D/Player/head/inventory_controller" instance=ExtResource("11_mmv35")]
 transform = Transform3D(-0.000545059, 0, 0.00295007, 0, 0.003, 0, -0.00295007, 0, -0.000545059, -0.0639992, -0.0540441, -0.549662)
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D/Player/head/inventory_controller/fishing_rod"]
 libraries = {
@@ -225,3 +230,4 @@ offset_right = 42.0
 offset_bottom = 23.0
 theme = SubResource("Theme_v1d64")
 text = "bepis"
+label_settings = SubResource("LabelSettings_vl64b")
