@@ -1,11 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://yc8juhv5d52"]
+[gd_scene load_steps=19 format=3 uid="uid://yc8juhv5d52"]
 
 [ext_resource type="Texture2D" uid="uid://b3g15ff2pa2ah" path="res://Shaders/rock_boulder_dry_rough_4k.png" id="1_ktjce"]
 [ext_resource type="Shader" path="res://Shaders/water.gdshader" id="2_660aj"]
 [ext_resource type="Texture2D" uid="uid://cav6ija76svd2" path="res://Shaders/seamless water 2.png" id="3_onbfj"]
 [ext_resource type="Script" path="res://scripts/Water.gd" id="4_sogmo"]
 [ext_resource type="PackedScene" uid="uid://dm6snwu8uhoxo" path="res://models/fish/scene.gltf" id="5_lg7lk"]
-[ext_resource type="Script" path="res://models/fish/aggro.gd" id="6_y4fo2"]
+[ext_resource type="Script" path="res://scripts/StateMachine.gd" id="7_ajq8q"]
+[ext_resource type="Script" path="res://scenes/interested.gd" id="8_ok26i"]
+[ext_resource type="Script" path="res://scenes/idle.gd" id="8_v0iyf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ue4eq"]
 size = Vector3(200, 10, 200)
@@ -121,7 +123,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0857348, 2.70495, -0.100366
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="Node"]
 motion_mode = 1
-script = ExtResource("6_y4fo2")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Node/CharacterBody3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0, 0)
@@ -134,3 +135,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10281, -0.125365, 0)
 transform = Transform3D(-4.29179e-08, -0.981846, 0.189678, 8.29109e-09, 0.189678, 0.981846, -1, 4.37114e-08, 8.88178e-16, 1.45509, 15.0488, 0)
 
 [node name="Sketchfab_Scene" parent="Node/CharacterBody3D" instance=ExtResource("5_lg7lk")]
+
+[node name="StateMachine" type="Node3D" parent="Node/CharacterBody3D"]
+script = ExtResource("7_ajq8q")
+
+[node name="idle" type="Node3D" parent="Node/CharacterBody3D/StateMachine"]
+script = ExtResource("8_v0iyf")
+
+[node name="interested" type="Node3D" parent="Node/CharacterBody3D/StateMachine"]
+script = ExtResource("8_ok26i")
