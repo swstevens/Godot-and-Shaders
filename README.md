@@ -25,7 +25,7 @@ This WIP project recreates the iconic rendering style of the PlayStation 1 (PS1)
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/ps1-style-godot.git
+   git clone https://github.com/swstevens/Godot-and-Shaders.git
    ```
 2. Open Godot Engine
 3. Click "Import"
